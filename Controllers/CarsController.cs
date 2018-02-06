@@ -42,5 +42,19 @@ namespace CarDealership.Controllers
                 return View("Error");
             }
         }
+
+        [HttpPost("cars/{id}/notes")]
+        public ActionResult AddNote(int id)
+        {
+            Car car = Car.GetByID(id);
+            if(car != null)
+            {
+                car.AddNote(Request.Form["new-note"]);
+                return View("Details", car);
+            } else
+            {
+                return View("Error");
+            }
+        }
     }
 }

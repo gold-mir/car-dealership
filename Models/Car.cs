@@ -9,6 +9,7 @@ namespace CarDealership.Models
         private int _milage;
         private string _description;
         private int _id;
+        private List<string> _notes = new List<string>();
 
         private static int ID = 0;
 
@@ -73,6 +74,16 @@ namespace CarDealership.Models
         public int GetID()
         {
             return _id;
+        }
+
+        public List<string> GetNotes()
+        {
+            return _notes;
+        }
+
+        public void AddNote(string note)
+        {
+            _notes.Add(note);
         }
     }
 }

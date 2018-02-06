@@ -6,12 +6,23 @@
     </head>
     <body>
         <h1>@Model.GetMakeModel()</h1>
-        <ul>
-            <li>@Model.GetMilage() miles</li>
-            <li>$@Model.GetPrice()</li>
-        </ul>
+        <h3>@Model.GetMilage() miles</h3>
+        <h3>$@Model.GetPrice()</h3>
         <p>@Model.GetDescription()</p>
+
+        <h4>Notes</h4>
+        <ul>
+            @foreach(string note in @Model.GetNotes())
+            {
+                <li>@note</li>
+            }
+        </ul>
+        <form action="/cars/@Model.GetID()/notes" method="post">
+            <label for="new-note">Add Note</label>
+            <input id="new-note"type="text" name="new-note" autofocus>
+            <button type="submit" name="button">Add Note</button>
+        </form>
+
+        <a href="/">Back to car list</a>
     </body>
 </html>
-
-<a href="/">Back to car list</a>
