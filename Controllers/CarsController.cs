@@ -24,10 +24,23 @@ namespace CarDealership.Controllers
             return View("index", Car.GetAll());
         }
 
-        [HttpGet("/new")]
+        [HttpGet("/new/")]
         public ActionResult New()
         {
             return View();
+        }
+
+        [HttpGet("/cars/{id}")]
+        public ActionResult Details(int id)
+        {
+            Car car = Car.GetByID(id);
+            if(car != null)
+            {
+                return View(car);
+            } else
+            {
+                return View("Error");
+            }
         }
     }
 }

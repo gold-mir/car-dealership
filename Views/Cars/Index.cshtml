@@ -10,7 +10,8 @@
             @using CarDealership.Models;
             @foreach (Car car in Model)
             {
-                <li>@car.GetMakeModel()</li>
+                string hrefString = "/cars/" + @car.GetID();
+                <li><a href=@hrefString>@car.GetMakeModel()</a></li>
             }
         </ul>
     </body>

@@ -8,6 +8,9 @@ namespace CarDealership.Models
         private int _price;
         private int _milage;
         private string _description;
+        private int _id;
+
+        private static int ID = 0;
 
         private static List<Car> _instances = new List<Car>();
 
@@ -18,11 +21,24 @@ namespace CarDealership.Models
             _makeModel = makeModel;
             _description = description;
             _instances.Add(this);
+            _id = ID++;
         }
 
         public static List<Car> GetAll()
         {
             return _instances;
+        }
+
+        public static Car GetByID(int id)
+        {
+            foreach (Car car in _instances)
+            {
+                if (car.GetID() == id)
+                {
+                    return car;
+                }
+            }
+            return null;
         }
 
         public bool Destroy()
@@ -52,6 +68,11 @@ namespace CarDealership.Models
         public void SetDescription(string str)
         {
             _description = str;
+        }
+
+        public int GetID()
+        {
+            return _id;
         }
     }
 }
