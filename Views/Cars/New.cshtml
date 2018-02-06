@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <h1>Add a car</h1>
+        <form id="form" action="/" method="post">
+            <div>
+                <label for='make-model'>Make and Model:</label>
+                <input id="make-model" type="text" name="make-model" required>
+            </div>
+            <div>
+                Price:
+                <input id="price" type="number" name="price" min="0" required>
+            </div>
+            <div>
+                Milage:
+                <input id="milage" type="number" name="milage" min="0" required>
+            </div>
+            <div>
+                Description:
+                <input id="description" type="text" name="description">
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>

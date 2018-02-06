@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+    </head>
+    <body>
+        <a href="/new"><button type="button" name="button">Add a car</button></a>
+        <ul>
+            @using CarDealership.Models;
+            @foreach (Car car in Model)
+            {
+                <li>@car.GetMakeModel()</li>
+            }
+        </ul>
+    </body>
+</html>
