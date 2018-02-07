@@ -43,7 +43,7 @@ namespace CarDealership.Controllers
             }
         }
 
-        [HttpPost("cars/{id}/notes")]
+        [HttpPost("cars/{id}/notes/")]
         public ActionResult AddNote(int id)
         {
             Car car = Car.GetByID(id);
@@ -51,6 +51,47 @@ namespace CarDealership.Controllers
             {
                 car.AddNote(Request.Form["new-note"]);
                 return View("Details", car);
+            } else
+            {
+                return View("Error");
+            }
+        }
+
+        [HttpGet("cars/{id}/notes/{noteID}")]
+        public ActionResult ViewNote(int carID, int noteID)
+        {
+            Car car = Car.GetByID(carID);
+            Note note = null;
+            foreach (Note item in car.GetNotes())
+            {
+                if(item.GetID() == noteID){
+                    note = item;
+                }
+            }
+            if(note != null)
+            {
+                return View(note);
+            } else
+            {
+                return View("Error");
+            }
+        }
+
+        [HttpPost("cars/{id}/notes/{noteID}")]
+        public ActionResult AddMetaNote(int carID, int noteID)
+        {
+            Car car = Car.GetByID(carID);
+            Note note = null;
+            foreach (Note item in car.GetNotes())
+            {
+                if(item.GetID() == noteID){
+                    note = item;
+                }
+            }
+            if(note != null)
+            {
+                note.AddNote(new Note(Request.Form["new-note"]));
+                return View("ViewNote", note);
             } else
             {
                 return View("Error");

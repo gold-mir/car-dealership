@@ -9,7 +9,7 @@ namespace CarDealership.Models
         private int _milage;
         private string _description;
         private int _id;
-        private List<string> _notes = new List<string>();
+        private List<Note> _notes = new List<Note>();
 
         private static int ID = 0;
 
@@ -76,14 +76,14 @@ namespace CarDealership.Models
             return _id;
         }
 
-        public List<string> GetNotes()
+        public List<Note> GetNotes()
         {
             return _notes;
         }
 
         public void AddNote(string note)
         {
-            _notes.Add(note);
+            _notes.Add(new Note(note));
         }
     }
 }
